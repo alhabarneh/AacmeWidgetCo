@@ -1,6 +1,11 @@
 <?php
+
+namespace App\Repositories;
+
 use App\Core\Database;
 use App\Repositories\Repository;
+use App\Models\Offer;
+use PDO;
 
 class OfferRepository implements Repository {
     public function __construct(private Database $database) 
@@ -24,7 +29,7 @@ class OfferRepository implements Repository {
             $prepared->execute([
                 "product_id"=> $offer->getProductId(),
                 "product_quantity_for_offer"=> $offer->getProductQuantityForOffer(),
-                "discount"=> $offer->getDiscount(),
+                "discount"=> $offer->getDiscountRate(),
                 "name"=> $offer->getName(),
             ]);
 
@@ -55,8 +60,8 @@ class OfferRepository implements Repository {
             $prepared->execute([
                 "id"=> $id
             ]);
-            $offer = $prepared->fetch(PDO::FETCH_ASSOC);
-            return $offer;
+            
+            return $prepared->fetch();
         } catch (\PDOException $e) {
             throw new \RepositoryException("Not Found", 404);
         }
@@ -69,8 +74,8 @@ class OfferRepository implements Repository {
             $prepared->execute([
                 "product_id"=> $productId
             ]);
-            $offer = $prepared->fetch(PDO::FETCH_ASSOC);
-            return $offer;
+            
+            return $prepared->fetch();
         } catch (\PDOException $e) {
             throw new \RepositoryException("Not Found", 404);
         }

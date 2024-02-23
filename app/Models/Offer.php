@@ -1,11 +1,12 @@
 <?php
+namespace App\Models;
 use App\Models\Model;
 
 class Offer implements Model {
     private int $id;
     private int $productId;
     private int $productQuantityForOffer;
-    private float $discount;
+    private float $discountRate;
     private string $name;
 
     public function getId() : int {
@@ -39,14 +40,14 @@ class Offer implements Model {
         return $this;
     }
 
-    public function getDiscount() : float 
+    public function getDiscountRate() : float 
     {
-        return $this->discount;
+        return $this->discountRate;
     }
 
-    public function setDiscount($discount) : Offer
+    public function setDiscountRate(float $discountRate) : Offer
     {
-        $this->discount = $discount;
+        $this->discountRate = $discountRate;
         return $this;
     }
 
