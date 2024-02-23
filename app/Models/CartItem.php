@@ -6,10 +6,10 @@ class CartItem implements Model
 {
 
     public function __construct(
-        private int $id, 
-        private int $quantity, 
-        private int $cartId, 
-        private int $productId
+        private ?int $id, 
+        private ?int $quantity, 
+        private ?int $cartId, 
+        private ?int $productId
         )
     {
     }

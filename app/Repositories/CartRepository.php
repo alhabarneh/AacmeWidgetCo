@@ -21,6 +21,8 @@ class CartRepository implements Repository{
             ]);
             
             $cart->setId((int) $this->database->lastInsertId());
+
+            return $cart;
             
         } catch (PDOException $e) {
             throw new \RepositoryException($e->getMessage(), 500);

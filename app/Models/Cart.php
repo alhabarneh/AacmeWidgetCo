@@ -17,10 +17,32 @@ class Cart implements Model
         return $this->userId;
     }
 
-    public function setCartItem(CartItem $cartItem): void
+    public function addCartItem(CartItem $cartItem): void
     {
         $this->cartItems[] = $cartItem;
     }
+
+    public function addCartItems(array $cartItems): void
+    {
+        $this->cartItems = array_merge($this->cartItems, $cartItems);
+    }
+
+    public function removeCartItem(CartItem $cartItem): void
+    {
+        $this->cartItems = array_filter($this->cartItems, fn($item) => $item->getId() !== $cartItem->getId());
+    }
+
+    public function getCartItem(int $id): CartItem
+    {
+        return array_filter($this->cartItems, fn($item) => $item->getId() === $id)[0];
+    }
+
+    public function clearCartItems(): void
+    {
+        $this->cartItems = [];
+    }
+
+    
 
     public function setId(int $id): void
     {

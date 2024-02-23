@@ -79,11 +79,4 @@ class OrderServiceTest extends TestCase
         $offerRepository->method('findByProductId')->willReturn($mockedOffer);
         return $offerRepository;
     }
-
-    // private function mockCartItemRepository()
-    // {
-    //     $cartItemRepository = $this->createMock(CartItemRepository::class);
-    //     $cartItemRepository->method('getCartItem')->willReturn('Cart Item 1');
-    //     return $cartItemRepository;
-    // }
 }
