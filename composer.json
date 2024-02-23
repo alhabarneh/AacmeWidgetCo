@@ -1,0 +1,22 @@
+{
+    "name": "acme/acme",
+    "type": "project",
+    "description": "Acme Widget Co are the leading provider of made up widget",
+    
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}

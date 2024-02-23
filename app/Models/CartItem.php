@@ -4,10 +4,15 @@ namespace App\Models;
 
 class CartItem implements Model
 {
-    private int $id;
-    private int $quantity;
-    private int $cartId;
-    private int $productId;
+
+    public function __construct(
+        private int $id, 
+        private int $quantity, 
+        private int $cartId, 
+        private int $productId
+        )
+    {
+    }
 
     public function getId(): int
     {
