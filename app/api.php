@@ -1,10 +1,12 @@
 <?php 
 
-// implement the routes here
+// here we implement the routes for the api
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/cart', 'CartController@index');
-//     Route::get('/product/{id}', 'ProductController@get');
+// Route::get('/cart', 'CartController@index');
+// Route::get('/product/{id}', 'ProductController@get');
+
+
+// Route::middleware('auth:admin')->group(function () {
 //     Route::post('/product', 'ProductController@add');
 //     ...etc
 // });

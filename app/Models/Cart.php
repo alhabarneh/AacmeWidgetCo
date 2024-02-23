@@ -36,4 +36,13 @@ class Cart implements Model
     {
         return $this->cartItems;
     }
+
+    public function getSubTotal(): int
+    {
+        $subTotal = 0;
+        foreach ($this->cartItems as $cartItem) {
+            $subTotal += $cartItem->getProduct()->getPrice() * $cartItem->getQuantity();
+        }
+        return $subTotal;
+    }
 }

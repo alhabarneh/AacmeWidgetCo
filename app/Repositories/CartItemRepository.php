@@ -61,6 +61,23 @@ class CartItemRepository implements Repository{
         }
     }
 
+    public function findByCartId(int $cartId)
+    {
+        try {
+            $prepared = $this->database->prepare(
+                "SELECT * FROM cartItems WHERE cart_id = :cart_id"
+            );
+
+            $prepared->execute([
+                'cart_id' => $cartId
+            ]);
+
+            return $prepared->fetchAll();
+        } catch (PDOException $e) {
+            throw new \RepositoryException($e->getMessage(), 500);
+        }
+    }
+
     public function update(int $id, array $data)
     {
         try {

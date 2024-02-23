@@ -1,12 +1,15 @@
 <?php 
 namespace App\Controllers;
+use App\Repositories\CartItemRepository;
 use App\Repositories\CartRepository;
 use ControllerException;
+use OfferRepository;
 use RepositoryException;
 use App\Models\Cart;
 class CartController {
     public function __construct(
         private CartRepository $cartRepository,
+        private CartItemRepository $cartItemRepository,
     ){}
 
     public function add(int $userId) {
@@ -32,6 +35,18 @@ class CartController {
     public function get(int $cartId) {
         try {
             $cart = $this->cartRepository->find($cartId);
+            return (array) $cart;
+        } catch (RepositoryException $e) {
+            throw new ControllerException("Unable to find cart", 404, $e);
+        }
+    }
+
+    public function getCartWithItems(int $cartId) {
+        try {
+            $cart = $this->cartRepository->find($cartId);
+            $cartItems = $this->cartItemRepository->findByCartId($cartId);
+            $cart->setCartItems($cartItems);
+            
             return (array) $cart;
         } catch (RepositoryException $e) {
             throw new ControllerException("Unable to find cart", 404, $e);
