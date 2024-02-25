@@ -43,7 +43,7 @@ class OrderService
             return 0;
         }
         
-        if ($cartItem->getQuantity() < $offer->getProductQuantityForOffer()) {
+        if ($cartItem->getQuantity() < $offer->getProductQuantityForOffer() || $offer->getProductQuantityForOffer() === 0){
             return 0;
         }
         
