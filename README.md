@@ -9,6 +9,7 @@ There are two containers
 You will need docker installed in your machine to build and up the container.
 ```
 docker-compose up -d
+docker exec -it acme
 composer install
 ```
 
@@ -16,12 +17,12 @@ composer install
 First you would need to exec into the docker container
 ```
 docker exec -it acme
-./vendor/bin/phpunit --verbose tests
+./vendor/bin/phpunit tests/Unit
 ```
 
 To run a specific unit test file run the following command
 ```
-./vendor/bin/phpunit --verbose tests/Unit/OrderServiceTest.php
+./vendor/bin/phpunit tests/Unit/OrderServiceTest.php
 ```
 ## App Structure
 The app is an MVC System split between (Models, Views, Controllers and also Services).
