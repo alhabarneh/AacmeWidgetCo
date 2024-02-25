@@ -9,6 +9,14 @@ class Product implements Model
     private int $price;
     private string $code;
 
+    public function __construct(array $data = [])
+    {
+        $this->id = $data['id'] ?? 0;
+        $this->name = $data['name'] ?? '';
+        $this->price = $data['price'] ?? 0;
+        $this->code = $data['code'] ?? '';
+    }
+
     public function getId(): int
     {
         return $this->id;

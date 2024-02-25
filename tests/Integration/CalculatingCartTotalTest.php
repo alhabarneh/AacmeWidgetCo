@@ -9,7 +9,7 @@ use App\Models\CartItem;
 use App\Models\Cart;
 use App\Services\OrderService;
 
-class calculateCartTotalTest extends \PHPUnit\Framework\TestCase
+class CalculatingCartTotalTest extends \PHPUnit\Framework\TestCase
 {
     public function testCalculateTotalReturnsCorrectTotal()
     {

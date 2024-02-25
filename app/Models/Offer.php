@@ -9,6 +9,14 @@ class Offer implements Model {
     private float $discountRate;
     private string $name;
 
+    public function __construct(array $data = []) {
+        $this->id = $data['id'] ?? 0;
+        $this->productId = $data['product_id'] ?? 0;
+        $this->productQuantityForOffer = $data['product_quantity_for_offer'] ?? 0;
+        $this->discountRate = $data['discount_rate'] ?? 0;
+        $this->name = $data['name'] ?? '';
+    }
+    
     public function getId() : int {
         return $this->id;
     }
